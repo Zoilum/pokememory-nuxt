@@ -54,7 +54,7 @@ const pokemons = computed(() =>
     )
   )
 );
-console.log(pokemons.value)
+
 const handleShowCard = (cardId: string) => {
   if (showedCards.value.length === 2 ||
     cardId === showedCards.value[0] ||
@@ -103,16 +103,19 @@ ul {
   height: 100dvh;
 }
 
-li {
-  list-style: none;
-}
+
 
 .game-grid {
   max-width: 100%;
   max-height: 100%;
   display: grid;
-  justify-content: center;
   grid-template-rows: 6fr 6fr;
-  grid-template-columns: 3fr 3fr 3fr 3fr;
+  grid-template-columns: repeat(4, 10rem);
+  grid-template-rows: repeat(2,  13.875rem);
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  align-content: center;
+  gap: 1rem;
 }
 </style>
