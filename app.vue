@@ -66,7 +66,6 @@ const handleShowCard = (cardId: string) => {
   showedCards.value = [cardId]
 }
 watch(showedCards, async cards => {
-  debugger;
   if (!cards[0] || !cards[1]) return
   if (cards[0].slice(0, -2) === cards[1].slice(0, -2)) {
     pairedCards.value = [...pairedCards.value, [cards[0], cards[1]]]
