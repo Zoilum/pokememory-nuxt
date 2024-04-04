@@ -1,9 +1,4 @@
 <script setup lang="ts">
-// import { constNull, identity, pipe } from "fp-ts/function";
-import * as t from "io-ts";
-// import * as E from "fp-ts/Either";
-// import * as RA from 'fp-ts/ReadonlyArray'
-const MIN_POKEMONS_QTY = 4;
 const FIRST_GEN_POKEMONS_COUNT = 151;
 
 export interface Pokemon {
@@ -11,9 +6,6 @@ export interface Pokemon {
   sprites: { front_default: string }
 }
 
-const PokemonsCodec = t.array(t.type({
-  name: t.string, sprites: t.type({ front_default: t.string })
-}));
 const showedCards = useState<string[]>('showedCards', () => [])
 const pairedCards = useState<string[][]>('pairedCards', () => [])
 // Fetch random pokemons
@@ -42,18 +34,6 @@ const { data, status } = await useAsyncData("pokemons", async () => {
   ]);
   return pokemons;
 });
-
-// TODO: fix fp-ts breaking on nuxt generate
-// Validate fetch pokemons response
-// const pokemons = computed(() =>
-//   pipe(
-//     data.value,
-//     PokemonsCodec.decode,
-//     E.match(constNull, (pokemons) =>
-//       [...pokemons, ...pokemons].sort(() => 0.5 - Math.random())
-//     )
-//   )
-// );
 
 const isPokemon = (x: unknown): x is Pokemon => !!x && Object.hasOwn(x, 'name') && Object.hasOwn(x, 'sprites')
 
