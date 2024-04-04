@@ -13,7 +13,7 @@ const { pokemon, isShown } = defineProps<Props>()
     <li @click="$emit('showCard')"  class="card" :class="{ 'shown': isShown }">
             <div class="content">
                 <div class="back">
-                    <img src="assets/back.png" alt="" class="back-cover">
+                    <img src="~/assets/back.png" alt="" class="back-cover">
                 </div>
                 <div class="front">
                     <!-- Math.random for cache busting -->
